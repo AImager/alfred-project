@@ -6,7 +6,7 @@ use SimpleXMLElement;
 
 class Log {
 	public static function info($info) {
-		$file = fopen("/Users/cong/Downloads/tt.txt", "w");
+		$file = fopen("~/Downloads/debug.txt", "w");
 		fwrite($file, "\n" . print_r($info, true));
 		fclose($file);
 	}
@@ -55,7 +55,6 @@ class ProjectModel {
 		}
 		$item = $parent->addChild('item');
 		$item->addAttribute('arg', $this->data['paths'][0]);
-		// $item->addAttribute('uid', $this->data['id'] . $this->score);
 		$item->title = $this->data['title'];
 		$item->subtitle = $this->data['paths'][0];
 		
