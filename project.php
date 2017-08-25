@@ -159,7 +159,6 @@ class Source {
 
 	public function readFile($query, $filename) {
 		if(substr($filename, -5, 5) == '.cson') {
-			Log::info($filename);
 			exec("python cson2json.py " . $filename);
 			$filename = "projects.json";
 		}
