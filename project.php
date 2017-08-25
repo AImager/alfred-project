@@ -6,7 +6,7 @@ use SimpleXMLElement;
 
 class Log {
 	public static function info($info) {
-		$file = fopen("~/Downloads/debug.txt", "w");
+		$file = fopen($_SERVER['HOME'] . "/Downloads/debug.txt", "w");
 		fwrite($file, "\n" . print_r($info, true));
 		fclose($file);
 	}
@@ -158,6 +158,11 @@ class Source {
 	}
 
 	public function readFile($query, $filename) {
+		if(substr($filename, -5, 5) == '.cson') {
+			Log::info($filename);
+			exec("python cson2json.py " . $filename);
+			$filename = "projects.json";
+		}
 		$json = json_decode(file_get_contents($filename), true);
 		$min = self::MIN_MATCH;	
 		return $this->normalizeData($json, function($obj) use($query, $min) {
