@@ -54,9 +54,14 @@ class ProjectModel {
 			$parent = new SimpleXMLElement('<items />');
 		}
 		$item = $parent->addChild('item');
-		$item->addAttribute('arg', $this->data['paths'][0]);
+		
 		$item->title = $this->data['title'];
-		$item->subtitle = $this->data['paths'][0];
+		$item->subtitle = join('    ', $this->data['paths']);
+
+		foreach($this->data['paths'] as $k => $val) {
+			$this->data['paths'][$k] = '"' . $val . '"';
+		}
+		$item->addAttribute('arg', join(' ', $this->data['paths']));
 		
 		return $item;
 	}
