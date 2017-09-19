@@ -6,7 +6,9 @@
 	<string></string>
 	<key>connections</key>
 	<dict>
-		<key>194C16BC-2EBE-4353-8BF4-329E0BAFB929</key>
+		<key>2E4D25EE-2CC9-4E3F-BC71-A6A7D83A7357</key>
+		<array/>
+		<key>FA97111C-147E-495D-8A96-BB0E6F708500</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
@@ -19,8 +21,6 @@
 				<false/>
 			</dict>
 		</array>
-		<key>2E4D25EE-2CC9-4E3F-BC71-A6A7D83A7357</key>
-		<array/>
 	</dict>
 	<key>createdby</key>
 	<string>AImager</string>
@@ -35,12 +35,57 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>keyword</key>
+				<string>project</string>
+				<key>queuedelaycustom</key>
+				<integer>1</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<false/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>script</key>
+				<string>PROFILE="atom;~/.atom/projects.cson;vscode;~/Library/Application Support/Code/User/projects.json" CURRENT_FOLDER=`osascript src/get_current_folder.applescript` EDITOR="atom;vscode" php src/index.php {query}</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>open project in editor, such as atom, vscode and so on</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>FA97111C-147E-495D-8A96-BB0E6F708500</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>concurrently</key>
 				<false/>
 				<key>escaping</key>
 				<integer>0</integer>
 				<key>script</key>
-				<string>/usr/local/bin/atom {query};</string>
+				<string>/usr/local/bin/atom {query}</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
@@ -55,69 +100,24 @@
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>alfredfiltersresults</key>
-				<false/>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>0</integer>
-				<key>escaping</key>
-				<integer>127</integer>
-				<key>keyword</key>
-				<string>atom</string>
-				<key>queuedelaycustom</key>
-				<integer>1</integer>
-				<key>queuedelayimmediatelyinitially</key>
-				<false/>
-				<key>queuedelaymode</key>
-				<integer>0</integer>
-				<key>queuemode</key>
-				<integer>1</integer>
-				<key>runningsubtext</key>
-				<string></string>
-				<key>script</key>
-				<string>PROFILE="~/.atom/projects.cson" php project.php {query}</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>subtext</key>
-				<string></string>
-				<key>title</key>
-				<string>atom project</string>
-				<key>type</key>
-				<integer>0</integer>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>194C16BC-2EBE-4353-8BF4-329E0BAFB929</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
 	<key>uidata</key>
 	<dict>
-		<key>194C16BC-2EBE-4353-8BF4-329E0BAFB929</key>
-		<dict>
-			<key>xpos</key>
-			<integer>140</integer>
-			<key>ypos</key>
-			<integer>160</integer>
-		</dict>
 		<key>2E4D25EE-2CC9-4E3F-BC71-A6A7D83A7357</key>
 		<dict>
 			<key>xpos</key>
-			<integer>390</integer>
+			<integer>530</integer>
 			<key>ypos</key>
-			<integer>160</integer>
+			<integer>120</integer>
+		</dict>
+		<key>FA97111C-147E-495D-8A96-BB0E6F708500</key>
+		<dict>
+			<key>xpos</key>
+			<integer>230</integer>
+			<key>ypos</key>
+			<integer>120</integer>
 		</dict>
 	</dict>
 	<key>webaddress</key>

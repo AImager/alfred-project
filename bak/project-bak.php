@@ -50,9 +50,9 @@ class ProjectModel {
 	}
 
 	public function to_xml($parent = null) {
-		if ($parent === null) {
-			$parent = new SimpleXMLElement('<items />');
-		}
+		// if ($parent === null) {
+		// 	$parent = new SimpleXMLElement('<items />');
+		// }
 		$item = $parent->addChild('item');
 		
 		$item->title = $this->data['title'];
@@ -63,7 +63,7 @@ class ProjectModel {
 		}
 		$item->addAttribute('arg', join(' ', $this->data['paths']));
 		
-		return $item;
+		// return $item;
 	}
 
 	public static function find($term) {
@@ -152,7 +152,7 @@ class Source {
 
 	public function read($query) {
 		$items = array();
-		$pattern = $this->normalizeFile($_SERVER['PROFILE']);
+		$pattern = $this->normalizeFile($_SERVER['ATOM_FILES']);
 		
 		foreach (glob($pattern) as $filename) {
 			
@@ -168,10 +168,25 @@ class Source {
 			$filename = "projects.json";
 		}
 		$json = json_decode(file_get_contents($filename), true);
+
+		if ($query->term == ".") {
+			$json = [
+				"paths" => [substr($_SERVER["SCRIPT"], 1, strlen($_SERVER["SCRIPT"]) - 2)],
+				"title" => "Current Folder"
+			];
+		}
+
 		$min = self::MIN_MATCH;	
 		return $this->normalizeData($json, function($obj) use($query, $min) {
 			if (!isset($obj['title'], $obj['paths'])) return;
-			$words = array_filter($obj, 'is_string');
+			$words = [
+				"title" => $obj['title'],
+				"paths" => join(' ', $obj['paths'])
+			];
+
+			if ($query->term == ".") {
+				$words = array_merge($words, ["relative" => "."]);
+			}
 			
 			if (($score = $query->multiScore($words)) > $min) {
 				return new $query->model($obj, $score);
