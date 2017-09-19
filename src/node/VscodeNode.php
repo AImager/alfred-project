@@ -3,6 +3,8 @@
 namespace alfmarks;
 
 class VscodeNode extends Node {
+	const VSCODE_EXEC = "open -a Visual\ Studio\ Code ";
+	
     public $data;
 
     public function __construct($data) {
@@ -12,7 +14,7 @@ class VscodeNode extends Node {
     public function add_to($documents) {
         $item = $documents->addChild('item');
         
-        $item->addAttribute('arg', $this->data['paths']);
+        $item->addAttribute('arg', self::VSCODE_EXEC . $this->data['paths']);
 		$item->title = $this->data['title'];
 		$item->subtitle = $this->data['paths'];
 		$item->icon = MEDIA_PATH . "vscode.png";

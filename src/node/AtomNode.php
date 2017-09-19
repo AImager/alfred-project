@@ -3,6 +3,8 @@
 namespace alfmarks;
 
 class AtomNode extends Node {
+	const ATOM_EXEC = "/usr/local/bin/atom ";
+	
     public $data;
 
     public function __construct($data) {
@@ -12,7 +14,7 @@ class AtomNode extends Node {
     public function add_to($documents) {
         $item = $documents->addChild('item');
 
-        $item->addAttribute('arg', $this->data['paths']);
+        $item->addAttribute('arg', self::ATOM_EXEC . $this->data['paths']);
         $item->title = $this->data['title'];
 		$item->subtitle = $this->data['paths'];
 		$item->icon = MEDIA_PATH . "atom.png";

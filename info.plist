@@ -25,11 +25,11 @@
 	<key>createdby</key>
 	<string>AImager</string>
 	<key>description</key>
-	<string>open project that registered in atom project manager</string>
+	<string>open project that registered in atom, vscode and so on</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>Atom Project</string>
+	<string>Open Project</string>
 	<key>objects</key>
 	<array>
 		<dict>
@@ -85,7 +85,7 @@
 				<key>escaping</key>
 				<integer>0</integer>
 				<key>script</key>
-				<string>/usr/local/bin/atom {query}</string>
+				<string>{query}</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
