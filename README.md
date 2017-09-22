@@ -7,9 +7,8 @@ Open the project using the following editors:
 
 open the current folder in finder
 
-![](\media\current_folder.png)
+![](https://github.com/AImager/alfred-project/blob/master/media/current_folder.png)
 
 open the project that config in atom or vscode
 
-![](\media\config_project.png)
-
+![](https://github.com/AImager/alfred-project/blob/master/media/config_project.png)
