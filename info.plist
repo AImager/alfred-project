@@ -6,8 +6,47 @@
 	<string></string>
 	<key>connections</key>
 	<dict>
+		<key>055ECEC4-B7F5-4100-8CDE-A023FF61A467</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>2E4D25EE-2CC9-4E3F-BC71-A6A7D83A7357</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>2E4D25EE-2CC9-4E3F-BC71-A6A7D83A7357</key>
 		<array/>
+		<key>C1563D58-8291-4E0F-A111-35D965760584</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>2E4D25EE-2CC9-4E3F-BC71-A6A7D83A7357</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>ED8263F6-7B34-41EF-9127-43C32B9F1243</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>2E4D25EE-2CC9-4E3F-BC71-A6A7D83A7357</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>FA97111C-147E-495D-8A96-BB0E6F708500</key>
 		<array>
 			<dict>
@@ -100,17 +139,173 @@
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>keyword</key>
+				<string>atom</string>
+				<key>queuedelaycustom</key>
+				<integer>1</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<false/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>script</key>
+				<string>PROFILE="atom;~/.atom/projects.cson" CURRENT_FOLDER=`osascript src/get_current_folder.applescript` EDITOR="atom" php src/index.php {query}</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>open project in atom</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>ED8263F6-7B34-41EF-9127-43C32B9F1243</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>keyword</key>
+				<string>vscode</string>
+				<key>queuedelaycustom</key>
+				<integer>1</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<false/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>script</key>
+				<string>PROFILE="vscode;~/Library/Application Support/Code/User/projects.json" CURRENT_FOLDER=`osascript src/get_current_folder.applescript` EDITOR="vscode" php src/index.php {query}</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>open project in vscode</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>C1563D58-8291-4E0F-A111-35D965760584</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>keyword</key>
+				<string>code</string>
+				<key>queuedelaycustom</key>
+				<integer>1</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<false/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>script</key>
+				<string>PROFILE="vscode;~/Library/Application Support/Code/User/projects.json" CURRENT_FOLDER=`osascript src/get_current_folder.applescript` EDITOR="vscode" php src/index.php {query}</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>open project in vscode</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>055ECEC4-B7F5-4100-8CDE-A023FF61A467</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
 	<key>uidata</key>
 	<dict>
+		<key>055ECEC4-B7F5-4100-8CDE-A023FF61A467</key>
+		<dict>
+			<key>xpos</key>
+			<integer>240</integer>
+			<key>ypos</key>
+			<integer>580</integer>
+		</dict>
 		<key>2E4D25EE-2CC9-4E3F-BC71-A6A7D83A7357</key>
 		<dict>
 			<key>xpos</key>
 			<integer>530</integer>
 			<key>ypos</key>
 			<integer>120</integer>
+		</dict>
+		<key>C1563D58-8291-4E0F-A111-35D965760584</key>
+		<dict>
+			<key>xpos</key>
+			<integer>240</integer>
+			<key>ypos</key>
+			<integer>430</integer>
+		</dict>
+		<key>ED8263F6-7B34-41EF-9127-43C32B9F1243</key>
+		<dict>
+			<key>xpos</key>
+			<integer>230</integer>
+			<key>ypos</key>
+			<integer>280</integer>
 		</dict>
 		<key>FA97111C-147E-495D-8A96-BB0E6F708500</key>
 		<dict>
