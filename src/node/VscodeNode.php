@@ -13,7 +13,7 @@ class VscodeNode extends Node {
 	
     public function add_to($documents) {
         $item = $documents->addChild('item');
-        
+        Log::info($this->data['paths']);
         $item->addAttribute('arg', self::VSCODE_EXEC . $this->data['paths']);
 		$item->title = $this->data['title'];
 		$item->subtitle = $this->data['paths'];
@@ -25,6 +25,10 @@ class VscodeNode extends Node {
 		
         return Node::normalizeData($objs, function($objs) {
             if (!isset($objs['name'], $objs['rootPath'])) return;
+
+            $objs['rootPath'] = str_replace('$home', getenv('HOME'), $objs['rootPath']);
+            $objs['rootPath'] = str_replace('\\', '/', $objs['rootPath']);
+            $objs['rootPath'] = str_replace(' ', '\ ', $objs['rootPath']);
             
             return new VscodeNode([
                 "title" => $objs['name'],
