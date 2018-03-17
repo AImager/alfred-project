@@ -13,7 +13,6 @@ class VscodeNode extends Node {
 	
     public function add_to($documents) {
         $item = $documents->addChild('item');
-        Log::info($this->data['paths']);
         $item->addAttribute('arg', self::VSCODE_EXEC . $this->data['paths']);
 		$item->title = $this->data['title'];
 		$item->subtitle = $this->data['paths'];
