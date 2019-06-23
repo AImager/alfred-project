@@ -2,37 +2,41 @@
 
 namespace alfmarks;
 
-class VscodeNode extends Node {
-	const VSCODE_EXEC = "open -a Visual\ Studio\ Code ";
-	
+class VscodeNode extends Node
+{
+    const VSCODE_EXEC = "open -a Visual\ Studio\ Code ";
+
     public $data;
 
-    public function __construct($data) {
+    public function __construct($data)
+    {
         $this->data = $data;
     }
-	
-    public function add_to($documents) {
+
+    public function add_to($documents)
+    {
         $item = $documents->addChild('item');
         $item->addAttribute('arg', self::VSCODE_EXEC . $this->data['paths']);
-		$item->title = $this->data['title'];
-		$item->subtitle = $this->data['paths'];
-		$item->icon = MEDIA_PATH . "vscode.png";
+        $item->title = $this->data['title'];
+        $item->subtitle = $this->data['paths'];
+        $item->icon = MEDIA_PATH . "vscode.png";
     }
 
-    static public function build_via_file ($filename) {
+    static public function build_via_file($filename)
+    {
         $objs = Node::get_objs($filename);
-		
-        return Node::normalizeData($objs, function($objs) {
+
+        return Node::normalizeData($objs, function ($objs) {
             if (!isset($objs['name'], $objs['rootPath'])) return;
 
             $objs['rootPath'] = str_replace('$home', getenv('HOME'), $objs['rootPath']);
             $objs['rootPath'] = str_replace('\\', '/', $objs['rootPath']);
             $objs['rootPath'] = str_replace(' ', '\ ', $objs['rootPath']);
-            
+
             return new VscodeNode([
                 "title" => $objs['name'],
                 "paths" => $objs['rootPath'],
-				"score_info" => strtolower($objs['name'])
+                "score_info" => strtolower($objs['name'])
             ]);
         });
     }

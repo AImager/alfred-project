@@ -17,26 +17,30 @@ define("MEDIA_PATH", ROOT_PATH . 'media/');
 
 // use SimpleXMLElement;
 
-class Log {
-	public static function info($info) {
-		$file = fopen($_SERVER['HOME'] . "/Downloads/debug.txt", "w+");
-		fwrite($file, "\n" . print_r($info, true));
-		fclose($file);
-	}
+class Log
+{
+    public static function info($info)
+    {
+        $file = fopen($_SERVER['HOME'] . "/Downloads/debug.txt", "w+");
+        fwrite($file, "\n" . print_r($info, true));
+        fclose($file);
+    }
 }
 
 try {
-	$src = new Source();
-	$term = $_SERVER['argv'][1];
-	$node_coll = new NodeCollection($src);
-	
-	// Log::info(print_r($node_coll->find($term), true));
-	echo $node_coll->find($term)
-					->filter(strlen($term)&0xFFFFFFFE/2)
-					->sort()
-					->to_xml();
-}
-catch (Exception $e) {
-	Log::info(print_r($e->getLine(), true));
-}
+    $src = new Source();
+    $term = $_SERVER['argv'][1];
+    $node_coll = new NodeCollection($src);
 
+
+    $result = $node_coll->find($term)
+        ->filter(strlen($term) & 0xFFFFFFFE / 2)
+        ->sort()
+        ->to_xml();
+
+    echo $result;
+
+    // Log::info(print_r($result, true));
+} catch (Exception $e) {
+    Log::info(print_r($e->getLine(), true));
+}
