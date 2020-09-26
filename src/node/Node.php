@@ -4,26 +4,56 @@ namespace alfmarks;
 
 class Node
 {
-    static public function normalizeData($objs, $callback)
+    /**
+     * 标题
+     * @var string
+     */
+    public $title;
+
+    /**
+     * 地址，空格分割
+     * @var string
+     */
+    public $paths;
+
+    /**
+     * 用于评分的信息
+     * @var string
+     */
+    public $scoreInfo;
+
+    private $params = [
+        "atom" => [
+            "exec" => "/usr/local/bin/atom ",
+            "png" => "atom.png",
+        ],
+        "vscode" => [
+            "exec" => "open -a Visual\ Studio\ Code ",
+            "png" => "vscode.png",
+        ],
+        "idea" => [
+            "exec" => "open -a IntelliJ\ IDEA ",
+            "png" => "idea.png",
+        ],
+    ];
+
+    /**
+     * 分数
+     * @var int
+     */
+    public $score;
+
+    public function __construct($title, $paths, $scoreInfo)
     {
-        $nodes = array();
-        if ($item = $callback($objs)) {
-            $nodes[] = $item;
-        }
-        foreach ($objs as $value) {
-            if (is_array($value)) {
-                $nodes = array_merge($nodes, Node::normalizeData($value, $callback));
-            }
-        }
-        return $nodes;
+        $this->title = $title;
+        $this->paths = $paths;
+        $this->scoreInfo = $scoreInfo;
     }
 
-    static public function get_objs($filename)
-    {
-        if (substr($filename, -5, 5) == '.cson') {
-            exec("python " . SRC_PATH . "transfer/cson2json.py " . $filename);
-            $filename = ROOT_PATH . "projects.json";
-        }
-        return json_decode(file_get_contents($filename), true);
+    public function initItem($item, $editorType) {
+        $item->title = $this->title;
+        $item->subtitle = $this->paths;
+        $item->addAttribute('arg', $this->params[$editorType]['exec']  . $this->paths);
+        $item->icon = MEDIA_PATH . $this->params[$editorType]['png'];
     }
 }

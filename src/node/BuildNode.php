@@ -4,24 +4,17 @@ namespace alfmarks;
 
 class BuildNode
 {
-    static public function build_via_file($type, $filename)
+    /**
+     * 建立文件
+     * @param Profile $profile
+     * @return Node
+     */
+    static public function buildViaFile($profile)
     {
-        // Log::info(print_r("asfsd", true));
-        switch ($type) {
-            case "atom":
-                return AtomNode::build_via_file($filename);
+        switch ($profile->type) {
             case "vscode":
-                return VscodeNode::build_via_file($filename);
-        }
-    }
-
-    static public function build_via_data($type, $data)
-    {
-        switch ($type) {
-            case "atom":
-                return new AtomNode($data);
-            case "vscode":
-                return new VscodeNode($data);
+                $config = new VscodeConfig();
+                return $config->buildViaFile($profile->filename);
         }
     }
 }

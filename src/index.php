@@ -3,44 +3,42 @@
 namespace alfmarks;
 
 require("node/Node.php");
-require("node/AtomNode.php");
-require("node/VscodeNode.php");
+require("node/VscodeConfig.php");
+require("node/Config.php");
+require("node/AtomConfig.php");
 require("node/BuildNode.php");
 require("node/NodeCollection.php");
-// require("node/Query.php");
-require("node/Source.php");
+require("node/Profile.php");
 
-
-define("ROOT_PATH", dirname(__dir__) . "/");
-define("SRC_PATH", __dir__ . "/");
+define("ROOT_PATH", dirname(__DIR__) . "/");
+define("SRC_PATH", __DIR__ . "/");
 define("MEDIA_PATH", ROOT_PATH . 'media/');
-
-// use SimpleXMLElement;
 
 class Log
 {
     public static function info($info)
     {
-        $file = fopen($_SERVER['HOME'] . "/Downloads/debug.txt", "w+");
+        $file = fopen($_SERVER['HOME'] . "/Downloads/debug.txt", "a+");
         fwrite($file, "\n" . print_r($info, true));
         fclose($file);
     }
 }
 
 try {
-    $src = new Source();
+    $profile = $_SERVER['PROFILE'];
+    $homePath = $_SERVER['HOME'];
+    $editor = $_SERVER['EDITOR'];
     $term = $_SERVER['argv'][1];
-    $node_coll = new NodeCollection($src);
 
+    $profiles = getProfiles($profile, $homePath);
+    $nodeColl = new NodeCollection($profiles);
 
-    $result = $node_coll->find($term)
+    $result = $nodeColl->find($term)
         ->filter(strlen($term) & 0xFFFFFFFE / 2)
         ->sort()
-        ->to_xml();
+        ->to_xml($editor);
 
     echo $result;
-
-    // Log::info(print_r($result, true));
-} catch (Exception $e) {
+} catch (\Exception $e) {
     Log::info(print_r($e->getLine(), true));
 }
