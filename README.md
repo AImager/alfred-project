@@ -2,6 +2,7 @@ Open the project using the following editors:
 
 * Atom
 * Visual Studio Code
+* Intellij IDEA
 
 ## feature
 
