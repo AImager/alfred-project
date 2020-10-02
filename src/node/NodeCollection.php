@@ -38,7 +38,7 @@ class NodeCollection
         return $document->asXML();
     }
 
-    public function find($term)
+    public function grade($term)
     {
         foreach ($this->nodes as $k => $node) {
             $score = max(strlen($node->scoreInfo), strlen($term)) - levenshtein($node->scoreInfo, $term);
@@ -53,10 +53,14 @@ class NodeCollection
      */
     public function __construct($profiles)
     {
-        foreach ($profiles as $profile) {
-            $tmpNodes = BuildNode::buildViaFile($profile);
-            foreach ($tmpNodes as $node) {
-                $this->nodes[] = $node;
+        if ($profiles == ".") {
+            $this->nodes[] = new Node("Current Folder", $_SERVER['CURRENT_FOLDER'], ".");
+        } else {
+            foreach ($profiles as $profile) {
+                $tmpNodes = BuildNode::buildViaFile($profile);
+                foreach ($tmpNodes as $node) {
+                    $this->nodes[] = $node;
+                }
             }
         }
     }

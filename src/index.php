@@ -31,9 +31,13 @@ try {
     $term = $_SERVER['argv'][1];
 
     $profiles = getProfiles($profile, $homePath);
-    $nodeColl = new NodeCollection($profiles);
+    if ($term == ".") {
+        $nodeColl = new NodeCollection(".");
+    } else {
+        $nodeColl = new NodeCollection($profiles);
+    }
 
-    $result = $nodeColl->find($term)
+    $result = $nodeColl->grade($term)
         ->filter(strlen($term) & 0xFFFFFFFE / 2)
         ->sort()
         ->to_xml($editor);
